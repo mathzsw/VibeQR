@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Crie um QR Code para abrir um link.">
+  <title>VibeQR | Gerador de QR Code</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="VibeQR, início">
+      <span class="brand__mark" aria-hidden="true">VQ</span>
+      <span>VibeQR</span>
+    </a>
+    <span class="topbar__label">GERADOR DE QR CODE</span>
+  </header>
+
+  <main class="page-shell">
+    <section class="intro">
+      <p class="eyebrow">SEU LINK, PRONTO PARA ESCANEAR</p>
+      <h1>Transforme seu link em um QR Code.</h1>
+      <p>Digite um endereço para criar um código que abre esse link quando for escaneado.</p>
+    </section>
+
+    <section class="workspace" aria-label="Gerador de QR Code">
+      <form id="formulario-qr" class="form-panel">
+        <div class="section-heading">
+          <span class="step-number">01</span>
+          <div>
+            <p class="eyebrow">COMECE POR AQUI</p>
+            <h2>Seu link</h2>
+          </div>
+        </div>
+
+        <label for="nome-link">Nome (opcional)</label>
+        <input id="nome-link" type="text" maxlength="60" placeholder="Ex.: Cardápio do café" autocomplete="off">
+
+        <label for="url-link">Endereço do site</label>
+        <input id="url-link" type="url" placeholder="https://exemplo.com" inputmode="url" required>
+        <p class="field-hint">O endereço precisa começar com http:// ou https://</p>
+
+        <button class="button" type="submit">Gerar QR Code <span aria-hidden="true">↗</span></button>
+        <p id="mensagem" class="message" role="status" aria-live="polite"></p>
+      </form>
+
+      <section class="result-panel" aria-labelledby="titulo-resultado">
+        <div class="section-heading">
+          <span class="step-number">02</span>
+          <div>
+            <p class="eyebrow">RESULTADO</p>
+            <h2 id="titulo-resultado">Seu QR Code</h2>
+          </div>
+        </div>
+        <div id="estado-vazio" class="empty-state">
+          <span class="empty-state__mark" aria-hidden="true">
+            <svg viewBox="0 0 48 48" role="presentation">
+              <path d="M4 4h15v15H4zM9 9v5h5V9zM29 4h15v15H29zM34 9v5h5V9zM4 29h15v15H4zM9 34v5h5v-5zM25 25h5v5h-5zM34 25h5v5h-5zM25 34h5v5h-5zM34 34h5v5h-5zM41 25h4v4h-4zM25 41h4v4h-4zM41 34h4v11h-4z" />
+            </svg>
+          </span>
+          <p>Seu código aparecerá aqui</p>
+        </div>
+        <div id="resultado-qr" class="qr-result" hidden>
+          <div id="qr-code" class="qr-frame"></div>
+          <h3 id="nome-resultado"></h3>
+          <p id="url-resultado" class="url-result"></p>
+          <a id="baixar-qr" class="button button--secondary" download="vibeqr.png">Baixar imagem do QR</a>
+        </div>
+      </section>
+    </section>
+
+    <aside class="note">
+      <span aria-hidden="true">i</span>
+      <p><strong>QR Code estático:</strong> ele guarda o link digitado. Se o endereço mudar, será necessário gerar um novo QR Code.</p>
+    </aside>
+
+    <footer class="page-footer">VibeQR <span aria-hidden="true">·</span> MVP da oficina de Vibe Coding</footer>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" referrerpolicy="no-referrer"></script>
+  <script src="script.js"></script>
+</body>
+</html>
